@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul class="nav justify-content-center nav-pills nav-tabs ">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Xem lịch đăng ký</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="xemlich.html">Xếp lịch</a>
+        </li>
+    </ul>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn môn học</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="subjects" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn phòng học kíp 1</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="rooms1" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn kíp học 1</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="shift1" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn ngày kíp học 1</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="dayshift1" style="width: 50%;">
+                        <option value=""></option>
+                        <option value="s1thu2">Thứ 2</option>
+                        <option value="s1thu3">Thứ 3</option>
+                        <option value="s1thu4">Thứ 4</option>
+                        <option value="s1thu5">Thứ 5</option>
+                        <option value="s1thu6">Thứ 6</option>
+                        <option value="s1thu7">Thứ 7</option>
+                        <option value="s1chunhat">Chủ nhật</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn tuần kíp học 1</p>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan1">
+                            <label class="custom-control-label" for="s1tuan1">1</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan2">
+                            <label class="custom-control-label" for="s1tuan2">2</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan3">
+                            <label class="custom-control-label" for="s1tuan3">3</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan4">
+
+                            <label class="custom-control-label" for="s1tuan4">4</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan5">
+
+                            <label class="custom-control-label" for="s1tuan5">5</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan6">
+
+                            <label class="custom-control-label" for="s1tuan6">6</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan7">
+
+                            <label class="custom-control-label" for="s1tuan7">7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan8">
+
+                            <label class="custom-control-label" for="s1tuan8">8</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan9">
+
+                            <label class="custom-control-label" for="s1tuan9">9</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan10">
+
+                            <label class="custom-control-label" for="s1tuan10">10</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan11">
+
+                            <label class="custom-control-label" for="s1tuan11">11</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan12">
+
+                            <label class="custom-control-label" for="s1tuan12">12</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan13">
+
+                            <label class="custom-control-label" for="s1tuan13">13</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan14">
+
+                            <label class="custom-control-label" for="s1tuan14">14</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s1tuan15">
+
+                            <label class="custom-control-label" for="s1tuan15">15</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn phòng học kíp 2</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="rooms2" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row kiphoc2">
+                <div class="col-sm-3">
+                    <p class="k2">Chọn kíp học 2</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="shift2" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn ngày kíp học 2</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="dayshift2" style="width: 50%;">
+                        <option value=""></option>
+                        <option value="s2thu2">Thứ 2</option>
+                        <option value="s2thu3">Thứ 3</option>
+                        <option value="s2thu4">Thứ 4</option>
+                        <option value="s2thu5">Thứ 5</option>
+                        <option value="s2thu6">Thứ 6</option>
+                        <option value="s2thu7">Thứ 7</option>
+                        <option value="s2chunhat">Chủ nhật</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row kiphoc2">
+                <div class="col-sm-3">
+                    <p class="k2">Chọn tuần kíp học 2</p>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan1">
+                            <label class="custom-control-label" for="s2tuan1">1</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan2">
+                            <label class="custom-control-label" for="s2tuan2">2</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan3">
+                            <label class="custom-control-label" for="s2tuan3">3</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan4">
+
+                            <label class="custom-control-label" for="s2tuan4">4</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan5">
+
+                            <label class="custom-control-label" for="s2tuan5">5</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan6">
+
+                            <label class="custom-control-label" for="s2tuan6">6</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan7">
+
+                            <label class="custom-control-label" for="s2tuan7">7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan8">
+
+                            <label class="custom-control-label" for="s2tuan8">8</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan9">
+
+                            <label class="custom-control-label" for="s2tuan9">9</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan10">
+
+                            <label class="custom-control-label" for="s2tuan10">10</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan11">
+
+                            <label class="custom-control-label" for="s2tuan11">11</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan12">
+
+                            <label class="custom-control-label" for="s2tuan12">12</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan13">
+
+                            <label class="custom-control-label" for="s2tuan13">13</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan14">
+
+                            <label class="custom-control-label" for="s2tuan14">14</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="s2tuan15">
+
+                            <label class="custom-control-label" for="s2tuan15">15</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn phòng thực hành</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="practice_rooms" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn kíp thực hành</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="practice_shifts" style="width: 50%;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn ngày thực hành</p>
+                </div>
+                <div class="col-sm-9">
+                    <select id="daypractice" style="width: 50%;">
+                        <option value=""></option>
+                        <option value="pthu2">Thứ 2</option>
+                        <option value="pthu3">Thứ 3</option>
+                        <option value="pthu4">Thứ 4</option>
+                        <option value="pthu5">Thứ 5</option>
+                        <option value="pthu6">Thứ 6</option>
+                        <option value="pthu7">Thứ 7</option>
+                        <option value="pchunhat">Chủ nhật</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="">Chọn tuần thực hành</p>
+                </div>
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan1">
+                            <label class="custom-control-label" for="ptuan1">1</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan2">
+                            <label class="custom-control-label" for="ptuan2">2</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan3">
+                            <label class="custom-control-label" for="ptuan3">3</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan4">
+
+                            <label class="custom-control-label" for="ptuan4">4</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan5">
+
+                            <label class="custom-control-label" for="ptuan5">5</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan6">
+
+                            <label class="custom-control-label" for="ptuan6">6</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan7">
+
+                            <label class="custom-control-label" for="ptuan7">7</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan8">
+
+                            <label class="custom-control-label" for="ptuan8">8</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan9">
+
+                            <label class="custom-control-label" for="ptuan9">9</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan10">
+
+                            <label class="custom-control-label" for="ptuan10">10</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan11">
+
+                            <label class="custom-control-label" for="ptuan11">11</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan12">
+
+                            <label class="custom-control-label" for="ptuan12">12</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan13">
+
+                            <label class="custom-control-label" for="ptuan13">13</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan14">
+
+                            <label class="custom-control-label" for="ptuan14">14</label>
+                        </div>
+                        <div class="custom-control custom-checkbox col">
+                            <input type="checkbox" class="custom-control-input" id="ptuan15">
+
+                            <label class="custom-control-label" for="ptuan15">15</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------->
+            <br><br>
+            <div class="text-center">
+                <button class="btn btn-primary" id="btnFetch">
+                    Xếp lịch
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+</body>
+<script type="text/javascript" src="httpServices.js"></script>
+<script type="text/javascript">
+
+    ////////////////////
+    let fetch_get_practice_rooms = get("http://localhost:8080/api/practice-rooms/")
+        .then(fetch_get_practice_rooms => {
+            console.log({ fetch_get_practice_rooms })
+            if (fetch_get_practice_rooms.code === "00") {
+                const practice_rooms = fetch_get_practice_rooms.data
+                select = document.getElementById('practice_rooms');
+                practice_rooms.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.id;
+                    opt.innerHTML = element.name;
+                    select.appendChild(opt);
+                });
+            }
+        })
+    ///////////////
+    let fetch_get_practice_shifts = get("http://localhost:8080/api/practice-shifts/")
+        .then(fetch_get_practice_shifts => {
+            console.log({ fetch_get_practice_shifts })
+            if (fetch_get_practice_shifts.code === "00") {
+                const practice_shifts = fetch_get_practice_shifts.data
+                select = document.getElementById('practice_shifts');
+                practice_shifts.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.id;
+                    opt.innerHTML = "Tiết " + element.startLesson + " đến tiết " + element.endLesson;
+                    select.appendChild(opt);
+                });
+            }
+        })
+    //////////////
+    let fetch_get_rooms = get("http://localhost:8080/api/rooms/")
+        .then(fetch_get_rooms => {
+            console.log({ fetch_get_rooms })
+            if (fetch_get_rooms.code === "00") {
+                const rooms = fetch_get_rooms.data
+                select1 = document.getElementById('rooms1');
+                rooms.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.id;
+                    opt.innerHTML = element.name;
+                    select1.appendChild(opt);
+                });
+                select2 = document.getElementById('rooms2');
+                rooms.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.id;
+                    opt.innerHTML = element.name;
+                    select2.appendChild(opt);
+                });
+            }
+        })
+    //////////////
+    let fetch_get_shifts = get("http://localhost:8080/api/shifts/")
+        .then(fetch_get_shifts => {
+            console.log({ fetch_get_shifts })
+            if (fetch_get_shifts.code === "00") {
+                const shifts = fetch_get_shifts.data
+                select1 = document.getElementById('shift1');
+                select2 = document.getElementById('shift2')
+                shifts.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.id;
+                    opt.innerHTML = "Tiết " + element.startLesson + " đến tiết " + element.endLesson;
+                    select1.appendChild(opt);
+                });
+                shifts.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.id;
+                    opt.innerHTML = "Tiết " + element.startLesson + " đến tiết " + element.endLesson;
+                    select2.appendChild(opt);
+                });
+            }
+        })
+    //////////////
+    let fetch_get_subjects = get("http://localhost:8080/api/subjects/")
+        .then(fetch_get_subjects => {
+            console.log({ fetch_get_subjects })
+            if (fetch_get_subjects.code === "00") {
+                const subjects = fetch_get_subjects.data
+                select = document.getElementById('subjects');
+                subjects.forEach(element => {
+                    var opt = document.createElement('option');
+                    opt.value = element.lessonNumber2 + " " + element.practiceNumber;
+                    opt.innerHTML = element.code + " - " + element.name;
+                    select.appendChild(opt);
+                });
+            }
+        })
+    /////////////
+    $(document).ready(() => {
+
+        console.log($("#subjects :selected").val())
+        if (!$("#subjects :selected").val()) {
+            $("#dayshift1").prop("disabled", "disabled")
+            $("#rooms1").prop("disabled", "disabled")
+            $("#shift1").prop("disabled", "disabled")
+            for (let i = 1; i <= 15; i++) {
+                $("#s1tuan" + i).attr("disabled", true)
+            }
+            $("#dayshift2").prop("disabled", "disabled")
+            $("#rooms2").prop("disabled", "disabled")
+            $("#shift2").prop("disabled", "disabled")
+            for (let i = 1; i <= 15; i++) {
+                $("#s2tuan" + i).attr("disabled", true)
+            }
+            $("#daypractice").prop("disabled", "disabled")
+            $("#practice_rooms").prop("disabled", "disabled")
+            $("#practice_shifts").prop("disabled", "disabled")
+            for (let i = 1; i <= 15; i++) {
+                $("#ptuan" + i).attr("disabled", true)
+            }
+        }
+        $("#subjects").change(function () {
+            const val = $("#subjects :selected").val()
+            const val_split = val.split(" ")
+            console.log(val, val_split[0], val_split[1])
+            if (!val) {
+                $("#dayshift1").prop("disabled", "disabled")
+                $("#rooms1").prop("disabled", "disabled")
+                $("#shift1").prop("disabled", "disabled")
+                for (let i = 1; i <= 15; i++) {
+                    $("#s1tuan" + i).attr("disabled", true)
+                }
+            }
+            else {
+                $("#dayshift1").prop("disabled", false)
+                $("#rooms1").prop("disabled", false)
+                $("#shift1").prop("disabled", false)
+                for (let i = 1; i <= 15; i++) {
+                    $("#s1tuan" + i).removeAttr("disabled")
+                }
+            }
+            if (!val || parseInt(val_split[0]) === 0) {
+                $("#dayshift2").prop("disabled", "disabled")
+                $("#rooms2").prop("disabled", "disabled")
+                $("#shift2").prop("disabled", "disabled")
+                for (let i = 1; i <= 15; i++) {
+                    $("#s2tuan" + i).attr("disabled", true)
+                }
+            }
+            else {
+                $("#dayshift2").prop("disabled", false)
+                $("#rooms2").prop("disabled", false)
+                $("#shift2").prop("disabled", false)
+                for (let i = 1; i <= 15; i++) {
+                    $("#s2tuan" + i).removeAttr("disabled")
+                }
+            }
+            if (!val || parseInt(val_split[1]) === 0) {
+                $("#daypractice").prop("disabled", "disabled")
+                $("#practice_rooms").prop("disabled", "disabled")
+                $("#practice_shifts").prop("disabled", "disabled")
+                for (let i = 1; i <= 15; i++) {
+                    $("#ptuan" + i).attr("disabled", true)
+                }
+            }
+            else {
+                $("#daypractice").prop("disabled", false)
+                $("#practice_rooms").prop("disabled", false)
+                $("#practice_shifts").prop("disabled", false)
+                for (let i = 1; i <= 15; i++) {
+                    $("#ptuan" + i).removeAttr("disabled")
+                }
+            }
+        })
+        $("#btnFetch").click(function () {
+            $(this).prop("disabled", true);
+            $(this).html(
+                `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+            );
+            post()
+        });
+
+    });
+    /////////////
+
+
+</script>
+
+</html>
