@@ -7,7 +7,6 @@ async function get(url) {
             'Content-type': 'Application/json',
         }
     }
-    let a = []
     return await fetch(url, options)
         .then(res => res.json())
 
@@ -15,7 +14,7 @@ async function get(url) {
 async function post(url, data) {
 
     let options = {
-        method: 'get',
+        method: 'post',
         headers: {
             'Accept': 'Application/json',
             'Content-type': 'Application/json',

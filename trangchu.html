@@ -67,7 +67,7 @@
                         <option value="s1thu5">Thứ 5</option>
                         <option value="s1thu6">Thứ 6</option>
                         <option value="s1thu7">Thứ 7</option>
-                        <option value="s1chunhat">Chủ nhật</option>
+                        <option value="s1thu8">Chủ nhật</option>
                     </select>
                 </div>
             </div>
@@ -186,7 +186,7 @@
                         <option value="s2thu5">Thứ 5</option>
                         <option value="s2thu6">Thứ 6</option>
                         <option value="s2thu7">Thứ 7</option>
-                        <option value="s2chunhat">Chủ nhật</option>
+                        <option value="s2thu8">Chủ nhật</option>
                     </select>
                 </div>
             </div>
@@ -304,7 +304,7 @@
                         <option value="pthu5">Thứ 5</option>
                         <option value="pthu6">Thứ 6</option>
                         <option value="pthu7">Thứ 7</option>
-                        <option value="pchunhat">Chủ nhật</option>
+                        <option value="pthu8">Chủ nhật</option>
                     </select>
                 </div>
             </div>
@@ -494,7 +494,7 @@
                 select = document.getElementById('subjects');
                 subjects.forEach(element => {
                     var opt = document.createElement('option');
-                    opt.value = element.lessonNumber2 + " " + element.practiceNumber;
+                    opt.value = element.id + " " + element.lessonNumber2 + " " + element.practiceNumber;
                     opt.innerHTML = element.code + " - " + element.name;
                     select.appendChild(opt);
                 });
@@ -525,9 +525,30 @@
             }
         }
         $("#subjects").change(function () {
+            ///////////////////// remove data after change subject
+            $("#dayshift1").prop("value", "")
+            $("#rooms1").prop("value", "")
+            $("#shift1").prop("value", "")
+            for (let i = 1; i <= 15; i++) {
+                $("#s1tuan" + i).prop('checked', false)
+            }
+            $("#dayshift2").prop("value", "")
+            $("#rooms2").prop("value", "")
+            $("#shift2").prop("value", "")
+            for (let i = 1; i <= 15; i++) {
+                $("#s2tuan" + i).prop('checked', false)
+            }
+            $("#daypractice").prop("value", "")
+            $("#practice_rooms").prop("value", "")
+            $("#practice_shifts").prop("value", "")
+            for (let i = 1; i <= 15; i++) {
+                $("#ptuan" + i).prop('checked', false)
+            }
+            ////////////////////
+
             const val = $("#subjects :selected").val()
             const val_split = val.split(" ")
-            console.log(val, val_split[0], val_split[1])
+            console.log(val, val_split[0], val_split[1], val_split[2])
             if (!val) {
                 $("#dayshift1").prop("disabled", "disabled")
                 $("#rooms1").prop("disabled", "disabled")
@@ -544,7 +565,7 @@
                     $("#s1tuan" + i).removeAttr("disabled")
                 }
             }
-            if (!val || parseInt(val_split[0]) === 0) {
+            if (!val || parseInt(val_split[1]) === 0) {
                 $("#dayshift2").prop("disabled", "disabled")
                 $("#rooms2").prop("disabled", "disabled")
                 $("#shift2").prop("disabled", "disabled")
@@ -560,7 +581,7 @@
                     $("#s2tuan" + i).removeAttr("disabled")
                 }
             }
-            if (!val || parseInt(val_split[1]) === 0) {
+            if (!val || parseInt(val_split[2]) === 0) {
                 $("#daypractice").prop("disabled", "disabled")
                 $("#practice_rooms").prop("disabled", "disabled")
                 $("#practice_shifts").prop("disabled", "disabled")
@@ -576,14 +597,58 @@
                     $("#ptuan" + i).removeAttr("disabled")
                 }
             }
+            ///////////////////////
+
         })
+
         $("#btnFetch").click(function () {
             $(this).prop("disabled", true);
             $(this).html(
-                `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+                `<span id="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
             );
-            post()
+            /////////////////////////// post schedule
+            let week1 = "", week2 = "", weekPractice = ""
+
+            for (let i = 1; i <= 15; i++) {
+                if ($("#s1tuan" + i).is(":checked")) {
+                    week1 += $("#s1tuan" + i).next('label').text() + ", "
+                }
+                if ($("#s2tuan" + i).is(":checked")) {
+                    week2 += $("#s2tuan" + i).next('label').text() + ", "
+                }
+                if ($("#ptuan" + i).is(":checked")) {
+                    weekPractice += $("#ptuan" + i).next('label').text() + ", "
+                }
+            }
+            week1 = week1.slice(0, week1.length - 2)
+            week2 = week2.slice(0, week2.length - 2)
+            weekPractice = weekPractice.slice(0, weekPractice.length - 2)
+            let request = {
+                idSubject: $("#subjects :selected").val().split(" ")[0],
+                idShift1: $("#shift1 :selected").val(),
+                idShift2: $("#shift1 :selected").val(),
+                idRoom: $("#rooms1 :selected").val(),
+                week1: week1,
+                week2: week2,
+                code: $("#subjects :selected").text().split(" - ")[0],
+                group: 1,
+                day: $("#dayshift1 :selected").val()[$("#dayshift1 :selected").val().length - 1],
+                idPracticeShift: $("#practice_shifts :selected").val(),
+                idPracticeRoom: $("#practice_rooms :selected").val(),
+                weekPractice: weekPractice,
+                groupPractice: 1,
+                dayPractice: $("#daypractice :selected").val()[$("#daypractice :selected").val().length - 1]
+            }
+            console.log({ request })
+
+            post("http://localhost:8080/api/schedule/", request)
+                .then(response => {
+                    $(this).prop("disabled", "disabled");
+                    $("#loading").remove()
+                    console.log(response)
+                })
         });
+
 
     });
     /////////////
