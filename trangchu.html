@@ -36,6 +36,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-3">
+                    <p class="">Nhập nhóm môn học</p>
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" id="group">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
                     <p class="">Chọn phòng học kíp 1</p>
                 </div>
                 <div class="col-sm-9">
@@ -283,6 +291,14 @@
             </div>
             <div class="row">
                 <div class="col-sm-3">
+                    <p class="">Nhập tổ thực hành</p>
+                </div>
+                <div class="col-sm-9">
+                    <input type="text" id="groupPractice">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
                     <p class="">Chọn kíp thực hành</p>
                 </div>
                 <div class="col-sm-9">
@@ -505,6 +521,7 @@
 
         console.log($("#subjects :selected").val())
         if (!$("#subjects :selected").val()) {
+            $("#group").prop("disabled", "disabled")
             $("#dayshift1").prop("disabled", "disabled")
             $("#rooms1").prop("disabled", "disabled")
             $("#shift1").prop("disabled", "disabled")
@@ -523,9 +540,11 @@
             for (let i = 1; i <= 15; i++) {
                 $("#ptuan" + i).attr("disabled", true)
             }
+            $("#groupPractice").prop("disabled", "disabled")
         }
         $("#subjects").change(function () {
             ///////////////////// remove data after change subject
+            $("#group").val("")
             $("#dayshift1").prop("value", "")
             $("#rooms1").prop("value", "")
             $("#shift1").prop("value", "")
@@ -538,6 +557,7 @@
             for (let i = 1; i <= 15; i++) {
                 $("#s2tuan" + i).prop('checked', false)
             }
+            $("#groupPractice").val("")
             $("#daypractice").prop("value", "")
             $("#practice_rooms").prop("value", "")
             $("#practice_shifts").prop("value", "")
@@ -550,19 +570,21 @@
             const val_split = val.split(" ")
             console.log(val, val_split[0], val_split[1], val_split[2])
             if (!val) {
+                $("#group").prop("disabled", "disabled")
                 $("#dayshift1").prop("disabled", "disabled")
                 $("#rooms1").prop("disabled", "disabled")
                 $("#shift1").prop("disabled", "disabled")
                 for (let i = 1; i <= 15; i++) {
-                    $("#s1tuan" + i).attr("disabled", true)
+                    $("#s1tuan" + i).prop("disabled", "disabled")
                 }
             }
             else {
+                $("#group").prop("disabled", false)
                 $("#dayshift1").prop("disabled", false)
                 $("#rooms1").prop("disabled", false)
                 $("#shift1").prop("disabled", false)
                 for (let i = 1; i <= 15; i++) {
-                    $("#s1tuan" + i).removeAttr("disabled")
+                    $("#s1tuan" + i).prop("disabled", false)
                 }
             }
             if (!val || parseInt(val_split[1]) === 0) {
@@ -570,7 +592,7 @@
                 $("#rooms2").prop("disabled", "disabled")
                 $("#shift2").prop("disabled", "disabled")
                 for (let i = 1; i <= 15; i++) {
-                    $("#s2tuan" + i).attr("disabled", true)
+                    $("#s2tuan" + i).prop("disabled", "disabled")
                 }
             }
             else {
@@ -578,23 +600,25 @@
                 $("#rooms2").prop("disabled", false)
                 $("#shift2").prop("disabled", false)
                 for (let i = 1; i <= 15; i++) {
-                    $("#s2tuan" + i).removeAttr("disabled")
+                    $("#s2tuan" + i).prop("disabled", false)
                 }
             }
             if (!val || parseInt(val_split[2]) === 0) {
+                $("#groupPractice").prop("disabled", "disabled")
                 $("#daypractice").prop("disabled", "disabled")
                 $("#practice_rooms").prop("disabled", "disabled")
                 $("#practice_shifts").prop("disabled", "disabled")
                 for (let i = 1; i <= 15; i++) {
-                    $("#ptuan" + i).attr("disabled", true)
+                    $("#ptuan" + i).prop("disabled", "disabled")
                 }
             }
             else {
+                $("#groupPractice").prop("disabled", false)
                 $("#daypractice").prop("disabled", false)
                 $("#practice_rooms").prop("disabled", false)
                 $("#practice_shifts").prop("disabled", false)
                 for (let i = 1; i <= 15; i++) {
-                    $("#ptuan" + i).removeAttr("disabled")
+                    $("#ptuan" + i).prop("disabled", false)
                 }
             }
             ///////////////////////
@@ -602,10 +626,10 @@
         })
 
         $("#btnFetch").click(function () {
-            $(this).prop("disabled", true);
-            $(this).html(
-                `<span id="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
-            );
+            // $(this).prop("disabled", true);
+            // $(this).html(
+            //     `<span id="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+            // );
             /////////////////////////// post schedule
             let week1 = "", week2 = "", weekPractice = ""
 
@@ -626,25 +650,25 @@
             let request = {
                 idSubject: $("#subjects :selected").val().split(" ")[0],
                 idShift1: $("#shift1 :selected").val(),
-                idShift2: $("#shift1 :selected").val(),
+                idShift2: $("#shift2 :selected").val() ? $("#shift2 :selected").val() : 1,
                 idRoom: $("#rooms1 :selected").val(),
                 week1: week1,
-                week2: week2,
+                week2: week2 ? week2 : 0,
                 code: $("#subjects :selected").text().split(" - ")[0],
-                group: 1,
+                group: $("#group").val(),
                 day: $("#dayshift1 :selected").val()[$("#dayshift1 :selected").val().length - 1],
-                idPracticeShift: $("#practice_shifts :selected").val(),
-                idPracticeRoom: $("#practice_rooms :selected").val(),
-                weekPractice: weekPractice,
-                groupPractice: 1,
-                dayPractice: $("#daypractice :selected").val()[$("#daypractice :selected").val().length - 1]
+                idPracticeShift: $("#practice_shifts :selected").val() ? $("#practice_shifts :selected").val() : 0,
+                idPracticeRoom: $("#practice_rooms :selected").val() ? $("#practice_rooms :selected").val(): 0,
+                weekPractice: weekPractice ? weekPractice : 0,
+                groupPractice: $("#groupPractice").val() ? $("#groupPractice").val() : 0,
+                dayPractice: $("#daypractice :selected").val() ? $("#daypractice :selected").val()[$("#daypractice :selected").val().length - 1] : 0
             }
             console.log({ request })
 
             post("http://localhost:8080/api/schedule/", request)
                 .then(response => {
-                    $(this).prop("disabled", "disabled");
-                    $("#loading").remove()
+                    // $(this).prop("disabled", "disabled");
+                    // $("#loading").remove()
                     console.log(response)
                 })
         });
