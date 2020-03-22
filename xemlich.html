@@ -117,6 +117,9 @@
                     $(this).parent().find('li').removeClass('active');
                     $(this).addClass('active');
 
+                    //
+                    $("#table_courses tbody").remove();
+                    //
                     let subject_id = $(this).val()
 
                     let fetch_get_list_courses = get("http://localhost:8080/api/courses/get-by-subject" + "?subjectId=" + subject_id)
@@ -134,6 +137,7 @@
                                 if (course.groupPractice !== 0) {
                                     if (course.group.shift2.id === 1) {
                                         $("#table_courses").append(`
+                                        <tbody style="font-size: 14px;">
                                             <tr>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
@@ -161,10 +165,12 @@
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
                                             </tr>
+                                        </tbody>
                                         `)
                                     }
                                     else {
                                         $("#table_courses").append(`
+                                        <tbody style="font-size: 14px;">
                                             <tr>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
@@ -190,6 +196,7 @@
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
                                             </tr>
+                                        </tbody>
                                         `)
 
                                     }
@@ -198,6 +205,7 @@
                                 else {
                                     if (course.group.shift2.id === 1) {
                                         $("#table_courses").append(`
+                                        <tbody style="font-size: 14px;">
                                             <tr>
                                                 <td rowspan="1" style="vertical-align : middle;text-align:center;"></td>
                                                 <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
@@ -216,10 +224,12 @@
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
                                             </tr>
+                                        </tbody>
                                         `)
                                     }
                                     else {
                                         $("#table_courses").append(`
+                                        <tbody style="font-size: 14px;">
                                             <tr>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
@@ -246,6 +256,7 @@
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.week2 + `</td>
                                             </tr>
+                                        </tbody>
                                         `)
                                     }
 
