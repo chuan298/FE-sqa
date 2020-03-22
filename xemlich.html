@@ -17,6 +17,14 @@
             overflow: scroll;
             -webkit-overflow-scrolling: touch;
         }
+
+        #abc:hover {
+            background-color: rgb(71, 59, 59);
+        }
+
+        .color {
+            background-color: rgb(185, 201, 185);
+        }
     </style>
 
 </head>
@@ -25,155 +33,253 @@
 
     <ul class="nav justify-content-center nav-pills nav-tabs ">
         <li class="nav-item">
-            <a class="nav-link" href="trangchu.html">Xem lich dang ki</a>
+            <a class="nav-link" href="trangchu.html">Xếp lịch</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Xep lich</a>
+            <a class="nav-link" href="#">Xem lịch đăng kí</a>
         </li>
     </ul>
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div class="row">
-
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex align-items-center">
-                    <p class="text-center">Môn học theo CTĐT kế hoạch</h3>
+                    <p class="text-center">
+                        </h3>
                 </div>
-
-                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 d-flex align-items-center">
                     <div class="input-group" style="width: 50%; margin-bottom: 20px;">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm môn học">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="button">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
                     </div>
-                    <ul class="list-group" style="height: 70%;">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 d-flex align-items-center">
+                    <p class="text-center">Môn học theo CTĐT kế hoạch</h3>
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <ul id="subjects_scheduled" class="list-group" style=" overflow-x: hidden;">
                     </ul>
-
                 </div>
 
             </div>
-
-            <div class="row">
-                <table class="table table-hover table-bordered">
-                    <thead style="font-size: 15px">
-                        <tr>
-                            <th></th>
-                            <th>Mã MH</th>
-                            <th>Tên môn học</th>
-                            <th>NMH</th>
-                            <th>TTH</th>
-                            <th>STC</th>
-                            <th>STCHP</th>
-                            <th>Mã lớp</th>
-                            <th>Sĩ số</th>
-                            <th>CL</th>
-                            <th>TH</th>
-                            <th>Tiết BD</th>
-                            <th>ST</th>
-                            <th>Phòng</th>
-                            <th>Giảng viên</th>
-                            <th>Tuần</th>
-                        </tr>
-                    </thead>
-                    <tbody style="font-size: 14px;">
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                            <td>john@example.com</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-
         </div>
+        <div class="container-fluid">
+            <table id="table_courses" class="table table-bordered">
+                <thead style="font-size: 14px; text-align: center;">
+                    <tr>
+                        <th></th>
+                        <th>Mã MH</th>
+                        <th>Tên môn học</th>
+                        <th>NMH</th>
+                        <th>TTH</th>
+                        <th>STC</th>
+                        <th>STCHP</th>
+                        <th>Mã lớp</th>
+                        <th>Sĩ số</th>
+                        <th>CL</th>
+                        <th>TH</th>
+                        <th>Tiết BD</th>
+                        <th>ST</th>
+                        <th>Phòng</th>
+                        <th>Tuần</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 14px;">
 
-
-
-
-
-
-
-
+                </tbody>
+            </table>
+        </div>
     </div>
 
 
 </body>
+<script type="text/javascript" src="httpServices.js"></script>
 <script>
-    $(function () {
 
-        $('.list-group li').click(function (e) {
-            e.preventDefault()
+    let fetch_get_list_subject_scheduled = get("http://localhost:8080/api/subjects/scheduled")
+        .then(fetch_get_list_subject_scheduled => {
+            console.log({ fetch_get_list_subject_scheduled })
+            fetch_get_list_subject_scheduled.data.forEach(subject => {
+                $("#subjects_scheduled").append('<li class="list-group-item" value="' + subject.id + '">' + subject.code + ' - ' + subject.name + '</li>')
+            });
 
-            $that = $(this);
+            ////////////////////////////
+            $(document).ready(() => {
+                $('.list-group li').click(function (e) {
+                    //e.preventDefault()
+                    $(this).parent().find('li').removeClass('active');
+                    $(this).addClass('active');
 
-            $that.parent().find('li').removeClass('active');
-            $that.addClass('active');
-        });
-    })
+                    let subject_id = $(this).val()
+
+                    let fetch_get_list_courses = get("http://localhost:8080/api/courses/get-by-subject" + "?subjectId=" + subject_id)
+                        .then(fetch_get_list_courses => {
+                            console.log({ fetch_get_list_courses })
+                            let courses = fetch_get_list_courses.data
+                            for (let i = 0; i < courses.length; i++) {
+                                for (let j = i + 1; j < courses.length; j++) {
+                                    if (courses[j].group.subject.code === courses[i].group.subject.code && !courses[i].groupPractice) {
+                                        delete courses[j]
+                                    }
+                                }
+                            }
+                            courses.forEach(course => {
+                                if (course.groupPractice !== 0) {
+                                    if (course.group.shift2.id === 1) {
+                                        $("#table_courses").append(`
+                                            <tr>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupPractice + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">*</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceShift.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 4 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceRoom.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.weekPractice + `</td>
+                                            </tr>
+                                            <tr>
+                                                <td ></td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.shift1.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
+                                            </tr>
+                                        `)
+                                    }
+                                    else {
+                                        $("#table_courses").append(`
+                                            <tr>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupPractice + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">*</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceShift.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 4 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceRoom.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.weekPractice + `</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.shift1.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
+                                            </tr>
+                                        `)
+
+                                    }
+
+                                }
+                                else {
+                                    if (course.group.shift2.id === 1) {
+                                        $("#table_courses").append(`
+                                            <tr>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;"></td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ "" + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td rowspan="1" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td></td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.shift1.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
+                                            </tr>
+                                        `)
+                                    }
+                                    else {
+                                        $("#table_courses").append(`
+                                            <tr>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ "" + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td></td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.shift1.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.shift2.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.week2 + `</td>
+                                            </tr>
+                                        `)
+                                    }
+
+                                }
+
+                            })
+                            $('td').click(function () {
+                                var $row = $(this).closest('tr');
+
+                                // What row index is the clicked row?
+                                var row = $row.index(); // Subtract heading row
+
+                                // Does the clicked row overlap anything following?
+                                var rowspan = ~~$row.find('td[rowspan]').attr('rowspan') || 0;
+
+                                // Get all rows except the heading, up to the last overlapped row
+                                var $rows = $row.parent().children().slice(1, row + rowspan);
+                                row--; // Subtract the heading row we excluded
+
+                                // Now see if any preceding rows overlap the clicked row
+                                $rows.each(function (i) {
+                                    var $tr = $(this);
+
+                                    // Only check first rowspan of a row
+                                    var rowspan = ~~$tr.find('td[rowspan]').attr('rowspan') || 0;
+
+                                    // If the rowspan is before the clicked row but overlaps it
+                                    // Or it is a row we included after the selection
+                                    if ((i < row && ((rowspan + i) > row)) || i > row) {
+                                        $row = $row.add($tr);
+                                    }
+                                });
+                                $("#table_courses").find('tr').removeClass('color');
+                                $row.addClass('color');
+                            });
+                        })
+
+                });
+                ////////////////////
+
+            })
+        })
 </script>
 
 </html>
