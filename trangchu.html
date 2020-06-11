@@ -290,11 +290,11 @@
     $('#2daypractice').append('<option value="p2thu' + 8 + '">Chủ nhật</option>')
 
 
-    ////////////////////
+    //////////////////// get practice room in db
     let fetch_get_practice_rooms = get("http://localhost:8080/api/practice-rooms/")
         .then(fetch_get_practice_rooms => {
             console.log({ fetch_get_practice_rooms })
-            if (fetch_get_practice_rooms.code === "00") {
+            if (fetch_get_practice_rooms.code === "00") { // check if get success then add rooms to tag selection
                 const practice_rooms = fetch_get_practice_rooms.data
                 select1 = document.getElementById('1practice_rooms');
                 practice_rooms.forEach(element => {
@@ -312,11 +312,11 @@
                 });
             }
         })
-    ///////////////
+    /////////////// get practice shift in db
     let fetch_get_practice_shifts = get("http://localhost:8080/api/practice-shifts/")
         .then(fetch_get_practice_shifts => {
             console.log({ fetch_get_practice_shifts })
-            if (fetch_get_practice_shifts.code === "00") {
+            if (fetch_get_practice_shifts.code === "00") { // check if get success then add rooms to tag selection
                 const practice_shifts = fetch_get_practice_shifts.data
                 select1 = document.getElementById('1practice_shifts');
                 practice_shifts.forEach(element => {
@@ -334,11 +334,11 @@
                 });
             }
         })
-    //////////////
+    ////////////// get room in db
     let fetch_get_rooms = get("http://localhost:8080/api/rooms/")
         .then(fetch_get_rooms => {
             console.log({ fetch_get_rooms })
-            if (fetch_get_rooms.code === "00") {
+            if (fetch_get_rooms.code === "00") { // check if get success then add rooms to tag selection
                 const rooms = fetch_get_rooms.data
                 select1 = document.getElementById('rooms1');
                 rooms.forEach(element => {
@@ -356,11 +356,11 @@
                 });
             }
         })
-    //////////////
+    ////////////// get shift in db
     let fetch_get_shifts = get("http://localhost:8080/api/shifts/")
         .then(fetch_get_shifts => {
             console.log({ fetch_get_shifts })
-            if (fetch_get_shifts.code === "00") {
+            if (fetch_get_shifts.code === "00") { // check if get success then add rooms to tag selection
                 const shifts = fetch_get_shifts.data
                 select1 = document.getElementById('shift1');
                 select2 = document.getElementById('shift2')
@@ -378,7 +378,7 @@
                 });
             }
         })
-    //////////////
+    ////////////// get subjects in db
     let fetch_get_subjects = get("http://localhost:8080/api/subjects/")
         .then(fetch_get_subjects => {
             console.log({ fetch_get_subjects })
@@ -394,10 +394,10 @@
             }
         })
     /////////////
-    $(document).ready(() => {
+    $(document).ready(() => { // all interface loaded
 
         console.log($("#subjects :selected").val())
-        if (!$("#subjects :selected").val()) {
+        if (!$("#subjects :selected").val()) { //  kiểm tra nếu không có môn nào được chọn thì disable tất cả các trường còn lại
             $("#code").prop("disabled", "disabled")
             $("#group").prop("disabled", "disabled")
             $("#dayshift1").prop("disabled", "disabled")
@@ -431,7 +431,7 @@
             $("#2groupPractice").prop("disabled", "disabled")
         }
         $("#subjects").change(function () {
-            ///////////////////// remove data after change subject
+            ///////////////////// mỗi lần đổi môn học sẽ xóa dữ liệu đã được chọn hoặc điền trước đó
             $("#code").val("")
             $("#group").val("")
             $("#dayshift1").prop("value", "")
@@ -463,11 +463,11 @@
                 $("#p2tuan" + i).prop('checked', false)
             }
             ////////////////////
-
-            const val = $("#subjects :selected").val()
+            // 
+            const val = $("#subjects :selected").val() // Lấy giá trị của môn học đang được chọn (val = subject.id + " " + subject.lessonNumber2 + " " + subject.practiceNumber;)
             const val_split = val.split(" ")
             console.log(val, val_split[0], val_split[1], val_split[2])
-            if (!val) {
+            if (!val) { // nếu giá trị của môn học đang được chọn ko tồn tại (tức là ô chọn là ô trống) thì set disable tất cả các trường còn lại
                 $("#code").prop("disabled", "disabled")
                 $("#group").prop("disabled", "disabled")
                 $("#dayshift1").prop("disabled", "disabled")
@@ -477,7 +477,7 @@
                     $("#s1tuan" + i).prop("disabled", "disabled")
                 }
             }
-            else {
+            else { // nếu giá trị của môn học đang được chọn tồn tại thì enable các trường của kíp học 1
                 $("#code").prop("disabled", false)
                 $("#group").prop("disabled", false)
                 $("#dayshift1").prop("disabled", false)
@@ -487,7 +487,7 @@
                     $("#s1tuan" + i).prop("disabled", false)
                 }
             }
-            if (!val || parseInt(val_split[1]) === 0) {
+            if (!val || parseInt(val_split[1]) === 0) { // kiểm tra môn học đó có 2 kíp ko? (subject.lessonNumber2) 
                 $("#dayshift2").prop("disabled", "disabled")
                 $("#rooms2").prop("disabled", "disabled")
                 $("#shift2").prop("disabled", "disabled")
@@ -495,7 +495,7 @@
                     $("#s2tuan" + i).prop("disabled", "disabled")
                 }
             }
-            else {
+            else { // nếu không thì enable các trường kíp 2
                 $("#dayshift2").prop("disabled", false)
                 $("#rooms2").prop("disabled", false)
                 $("#shift2").prop("disabled", false)
@@ -503,7 +503,7 @@
                     $("#s2tuan" + i).prop("disabled", false)
                 }
             }
-            if (!val || parseInt(val_split[2]) === 0) {
+            if (!val || parseInt(val_split[2]) === 0) { // kiểm tra môn đó có thực hành ko? (subject.practiceNumber)
                 $("#1groupPractice").prop("disabled", "disabled")
                 $("#1daypractice").prop("disabled", "disabled")
                 $("#1practice_rooms").prop("disabled", "disabled")
@@ -520,7 +520,7 @@
                     $("#p2tuan" + i).prop("disabled", "disabled")
                 }
             }
-            else {
+            else { // nếu ko thì enable các trường thực hành
                 $("#1groupPractice").prop("disabled", false)
                 $("#1daypractice").prop("disabled", false)
                 $("#1practice_rooms").prop("disabled", false)
@@ -541,14 +541,14 @@
 
         })
 
-        $("#btnFetch").click(function () {
-            $(this).prop("disabled", true);
+        $("#btnFetch").click(function () { // click xếp lịch
+            $(this).prop("disabled", true); // trong lúc click thì disable nút
             $(this).append(
                 `<span id="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
             );
             /////////////////////////// post schedule
             let week1 = "", week2 = "", weekPractice1 = "", weekPractice2 = ""
-
+            // khởi tạo tuần
             for (let i = 1; i <= 10; i++) {
                 if ($("#s1tuan" + i).is(":checked")) {
                     week1 += $("#s1tuan" + i).next('label').text() + ", "
@@ -563,10 +563,12 @@
                     weekPractice2 += $("#p2tuan" + i).next('label').text() + ", "
                 }
             }
+            // cắt dấu phẩy ở cuối
             week1 = week1.slice(0, week1.length - 2)
             week2 = week2.slice(0, week2.length - 2)
             weekPractice1 = weekPractice1.slice(0, weekPractice1.length - 2)
             weekPractice2 = weekPractice2.slice(0, weekPractice2.length - 2)
+            // khởi tạo request để gửi đi bằng dữ liệu đã được điền hoặc chọn
             let request = {
                 id_subject: $("#subjects :selected").val().split(" ")[0],
                 id_shift1: $("#shift1 :selected").val(),
@@ -589,10 +591,10 @@
                 day_practice2: $("#2daypractice :selected").val() ? $("#2daypractice :selected").val()[$("#2daypractice :selected").val().length - 1] : "0"
             }
             console.log({ request })
-
+            // gửi dữ liệu đi
             post("http://localhost:8080/api/schedule/", request)
                 .then(response => {
-                    $(this).prop("disabled", false);
+                    $(this).prop("disabled", false); // enable nút sau khi đã có kết quả trả về của xếp lịch
                     $("#loading").remove()
                     console.log(response)
                     alert(response.message)

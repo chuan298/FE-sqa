@@ -102,18 +102,19 @@
 </body>
 <script type="text/javascript" src="httpServices.js"></script>
 <script>
-
+    // get các môn học đã được xếp lịch
     let fetch_get_list_subject_scheduled = get("http://localhost:8080/api/subjects/scheduled")
         .then(fetch_get_list_subject_scheduled => {
             console.log({ fetch_get_list_subject_scheduled })
-            fetch_get_list_subject_scheduled.data.forEach(subject => {
+            fetch_get_list_subject_scheduled.data.forEach(subject => { // hiển thị nó lên list-group
                 $("#subjects_scheduled").append('<li class="list-group-item" value="' + subject.id + '">' + subject.code + ' - ' + subject.name + '</li>')
             });
 
             ////////////////////////////
             $(document).ready(() => {
-                $('.list-group li').click(function (e) {
+                $('.list-group li').click(function (e) { // chọn 1 môn học
                     //e.preventDefault()
+                    // xóa active của các môn học trước đó rồi thêm active cho môn đang được chọn
                     $(this).parent().find('li').removeClass('active');
                     $(this).addClass('active');
 
@@ -121,7 +122,7 @@
                     $("#table_courses tbody").remove();
                     //
                     let subject_id = $(this).val();
-
+                    // get danh sách courses từ db theo môn học đang được chọn
                     let fetch_get_list_courses = get("http://localhost:8080/api/courses/get-by-subject" + "?subjectId=" + subject_id)
                         .then(fetch_get_list_courses => {
                             let courses = fetch_get_list_courses.data;
@@ -137,9 +138,10 @@
                             courses.forEach(course => {
                                 console.log(course)
                                 
-                                if (course.groupPractice !== 0) {
-                                    if (course.group.shift2.id === 1) {
+                                if (course.groupPractice !== 0) { // nếu môn đó có thực hành
+                                    if (course.group.shift2.id === 1) { // nếu ko có 2 kíp
                                         console.log("dsadsad")
+                                        // thì hiển thị dạng row có 2 kíp + thực hành
                                         $("#table_courses").append(`
                                         <tbody style="font-size: 14px;">
                                             <tr>
@@ -171,7 +173,7 @@
                                         </tbody>
                                         `)
                                     }
-                                    else {
+                                    else { // nếu có 2 kíp
                                         console.log("aaaaa")
                                         $("#table_courses").append(`
                                         <tbody style="font-size: 14px;">
@@ -216,7 +218,7 @@
 
                                 }
                                 else {
-                                    if (course.group.shift2.id === 1) {
+                                    if (course.group.shift2.id === 1) { // nếu ko có 2 kíp, chỉ cần 1 kíp
                                         $("#table_courses").append(`
                                         <tbody style="font-size: 14px;">
                                             <tr>
@@ -240,7 +242,7 @@
                                         </tbody>
                                         `)
                                     }
-                                    else {
+                                    else { // nếu ko có thực hành
                                         $("#table_courses").append(`
                                         <tbody style="font-size: 14px;">
                                             <tr>
@@ -276,6 +278,7 @@
                                 }
 
                             })
+                            // click để cho 1 vùng dc tô màu (cái này đi coppy :v)
                             $('td').click(function () {
                                 var $row = $(this).closest('tr');
 
