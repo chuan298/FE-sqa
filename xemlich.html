@@ -120,22 +120,26 @@
                     //
                     $("#table_courses tbody").remove();
                     //
-                    let subject_id = $(this).val()
+                    let subject_id = $(this).val();
 
                     let fetch_get_list_courses = get("http://localhost:8080/api/courses/get-by-subject" + "?subjectId=" + subject_id)
                         .then(fetch_get_list_courses => {
-                            console.log({ fetch_get_list_courses })
-                            let courses = fetch_get_list_courses.data
-                            for (let i = 0; i < courses.length; i++) {
-                                for (let j = i + 1; j < courses.length; j++) {
-                                    if (courses[j].group.subject.code === courses[i].group.subject.code && !courses[i].groupPractice) {
-                                        delete courses[j]
-                                    }
-                                }
-                            }
+                            let courses = fetch_get_list_courses.data;
+                            console.log({ courses });
+                            // for (let i = 0; i < courses.length; i++) {
+                            //     for (let j = i + 1; j < courses.length; j++) {
+                            //         if (courses[j].group.subject.code === courses[i].group.subject.code && !courses[i].groupPractice) {
+                            //             delete courses[j];
+                            //         }
+                            //     }
+                            // }
+                            
                             courses.forEach(course => {
+                                console.log(course)
+                                
                                 if (course.groupPractice !== 0) {
                                     if (course.group.shift2.id === 1) {
+                                        console.log("dsadsad")
                                         $("#table_courses").append(`
                                         <tbody style="font-size: 14px;">
                                             <tr>
@@ -143,7 +147,7 @@
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupPractice + `</td>
+                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.groupPractice + `</td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
@@ -151,14 +155,13 @@
                                                 <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">*</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.dayPractice +`</td>
-                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceShift.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.practiceShift.startLesson + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ 4 + `</td>
-                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceRoom.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.practiceRoom.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.weekPractice + `</td>
                                             </tr>
                                             <tr>
                                                 <td ></td>
-                                                <td style="vertical-align : middle;text-align:center;">`+ course.dayPractice +`</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.day +`</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.shift1.startLesson + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
@@ -169,23 +172,25 @@
                                         `)
                                     }
                                     else {
+                                        console.log("aaaaa")
                                         $("#table_courses").append(`
                                         <tbody style="font-size: 14px;">
                                             <tr>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;"></td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.groupPractice + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
-                                                <td rowspan="2" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;"></td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.group.subject.code + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.group.subject.name + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.group.groupNumber + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.groupPractice + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.group.subject.creditNumber + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ course.group.code + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
+                                                <td rowspan="3" style="vertical-align : middle;text-align:center;">`+ 45 + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">*</td>
-                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceShift.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.dayPractice +`</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.practiceShift.startLesson + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ 4 + `</td>
-                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.practiceRoom.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.practiceRoom.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.weekPractice + `</td>
                                             </tr>
                                             <tr>
@@ -195,6 +200,14 @@
                                                 <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
                                                 <td style="vertical-align : middle;text-align:center;">`+ course.group.week1 + `</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.day +`</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.shift2.startLesson + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ 2 + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.room.name + `</td>
+                                                <td style="vertical-align : middle;text-align:center;">`+ course.group.week2 + `</td>
                                             </tr>
                                         </tbody>
                                         `)
